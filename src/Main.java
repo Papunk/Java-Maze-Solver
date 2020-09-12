@@ -10,11 +10,11 @@ public class Main {
         window.setSize(windowSize, windowSize);
         window.setTitle("Maze");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(false);
+//        window.setResizable(false);
 
         Grid grid = new Grid(windowSize/squareSize, windowSize/squareSize, squareSize);
         MazeMaker mazeMaker = new MazeMaker();
-        mazeMaker.generateMaze(grid.getGrid(), Direction.RIGHT, 0, 0, (int) Math.pow(windowSize, 6));
+        mazeMaker.generateMaze(grid.getGrid(), Direction.RIGHT, 0, 0, (int) Math.pow(windowSize, 2));
 
         window.add(grid);
         window.setVisible(true);

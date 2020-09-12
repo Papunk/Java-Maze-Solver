@@ -15,7 +15,6 @@ public class MazeMaker {
         //TODO add some input validation
 
         int moves = 0;
-        int squareSize = matrix[0][0].getSquareSize();
         int x = startingX;
         int y = startingY;
         Direction currentDirection = startingDirection;
@@ -34,24 +33,19 @@ public class MazeMaker {
                 moves++;
             } else return;
 
-            //TODO check the effect of using the instance variables x and y. (they should not be eliminated entirely)
-
-            if (moves % 10 == 0) generateMaze(matrix, changeDirection(currentDirection), x, y, bound / 2);
+            if (moves % 10 == 0) generateMaze(matrix, changeDirection(currentDirection), x, y, bound-moves);
         }
     }
 
     public Direction changeDirection(Direction currentDirection) {
-        Direction direction = null;
-        while (true) {
-            switch(random.nextInt(4)) {
-                case 0: direction = Direction.RIGHT; break;
-                case 1: direction = Direction.LEFT; break;
-                case 2: direction = Direction.UP; break;
-                default: direction = Direction.DOWN;
-            }
-            System.out.println(direction.toString());
-            if (direction != currentDirection) return direction;
-        }
+        return switch (currentDirection) {
+            case RIGHT, LEFT -> chooseRandomDir(new Direction[]{Direction.UP, Direction.DOWN});
+            case UP, DOWN -> chooseRandomDir(new Direction[]{Direction.LEFT, Direction.UP});
+        };
+    }
+
+    public Direction chooseRandomDir(Direction[] dirs) {
+        return dirs[random.nextInt(dirs.length)];
     }
 
     public Boolean moveIsLegal(GridSpace[][] matrix, Direction direction, int x, int y) {
