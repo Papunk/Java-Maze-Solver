@@ -22,6 +22,7 @@ public class MazeMaker {
 
         while (moves < bound) {
             matrix[x][y].setType(SpaceType.EMPTY);
+
             if (moveIsLegal(matrix, currentDirection, x, y)) {
                 // move
                 switch (currentDirection) {
@@ -31,7 +32,7 @@ public class MazeMaker {
                     default: y++;
                 }
                 moves++;
-            } else currentDirection = changeDirection(currentDirection);
+            } else return;
 
             //TODO check the effect of using the instance variables x and y. (they should not be eliminated entirely)
 
