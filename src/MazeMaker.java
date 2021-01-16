@@ -37,6 +37,7 @@ public class MazeMaker {
         }
     }
 
+    // fixed jdk issue
     public Direction changeDirection(Direction currentDirection) {
         return switch (currentDirection) {
             case RIGHT, LEFT -> chooseRandomDir(new Direction[]{Direction.UP, Direction.DOWN});
