@@ -19,5 +19,8 @@ public class Main {
 //        window.add(grid);
 //        window.setVisible(true);
 
+        Maze m = new Maze();
+        m.getFromImage("res/image.png");
+
     }
 }
