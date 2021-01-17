@@ -20,7 +20,7 @@ public class Main {
 //        window.setVisible(true);
 
         Maze m = new Maze();
-        m.getFromImage("res/image.png");
+        m.getFromImage("res/image.png", 0, -16777216, 1, 2);
 
     }
 }
